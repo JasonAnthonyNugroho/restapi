@@ -65,6 +65,12 @@ public static class PartsManager
         msg.Content = JsonContent.Create<Part>(part);
         var response = await client.SendAsync(msg);
         response.EnsureSuccessStatusCode();
+        var returnedJson = await response.Content.ReadAsStringAsync();
+
+        var insertedPart = JsonSerializer.Deserialize<Part>(returnedJson, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        });
     }
 
     public static async Task Update(Part part)
