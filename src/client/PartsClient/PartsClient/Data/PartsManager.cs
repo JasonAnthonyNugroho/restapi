@@ -51,7 +51,8 @@ public static class PartsManager
 
     public static async Task<Part> Add(string partName, string supplier, string partType)
     {
-        throw new NotImplementedException();
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            return new Part();
     }
 
     public static async Task Update(Part part)
