@@ -18,7 +18,21 @@ public static class PartsManager
 
     private static async Task<HttpClient> GetClient()
     {
-        throw new NotImplementedException();
+        if (client != null)
+            return client;
+
+        client = new HttpClient();
+
+        if (string.IsNullOrEmpty(authorizationKey))
+        {
+            authorizationKey = await client.GetStringAsync($"{Url}login");
+            authorizationKey = JsonSerializer.Deserialize<string>(authorizationKey);
+        }
+
+        client.DefaultRequestHeaders.Add("Authorization", authorizationKey);
+        client.DefaultRequestHeaders.Add("Accept", "application/json");
+
+        return client;
     }
 
     public static async Task<IEnumerable<Part>> GetAll()
