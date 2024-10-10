@@ -63,6 +63,8 @@ public static class PartsManager
         };
         var msg = new HttpRequestMessage(HttpMethod.Post, $"{Url}parts");
         msg.Content = JsonContent.Create<Part>(part);
+        var response = await client.SendAsync(msg);
+        response.EnsureSuccessStatusCode();
     }
 
     public static async Task Update(Part part)
