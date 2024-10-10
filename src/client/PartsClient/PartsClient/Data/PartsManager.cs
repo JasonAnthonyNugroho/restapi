@@ -37,7 +37,8 @@ public static class PartsManager
 
     public static async Task<IEnumerable<Part>> GetAll()
     {
-        throw new NotImplementedException();                
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            return new List<Part>();
     }
 
     public static async Task<Part> Add(string partName, string supplier, string partType)
