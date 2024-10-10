@@ -62,6 +62,7 @@ public static class PartsManager
             PartAvailableDate = DateTime.Now.Date
         };
         var msg = new HttpRequestMessage(HttpMethod.Post, $"{Url}parts");
+        msg.Content = JsonContent.Create<Part>(part);
     }
 
     public static async Task Update(Part part)
