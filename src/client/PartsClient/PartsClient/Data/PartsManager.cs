@@ -71,6 +71,7 @@ public static class PartsManager
         {
             PropertyNameCaseInsensitive = true,
         });
+        return insertedPart;
     }
 
     public static async Task Update(Part part)
