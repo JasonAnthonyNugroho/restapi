@@ -61,6 +61,7 @@ public static class PartsManager
             PartType = partType,
             PartAvailableDate = DateTime.Now.Date
         };
+        var msg = new HttpRequestMessage(HttpMethod.Post, $"{Url}parts");
     }
 
     public static async Task Update(Part part)
