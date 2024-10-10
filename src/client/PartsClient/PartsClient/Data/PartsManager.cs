@@ -39,6 +39,14 @@ public static class PartsManager
     {
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             return new List<Part>();
+
+        var client = await GetClient();
+        string result = await client.GetStringAsync($"{Url}parts");
+
+        return JsonSerializer.Deserialize<List<Part>>(result, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+        });
     }
 
     public static async Task<Part> Add(string partName, string supplier, string partType)
