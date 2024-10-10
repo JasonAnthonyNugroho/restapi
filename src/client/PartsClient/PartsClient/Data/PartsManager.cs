@@ -76,7 +76,8 @@ public static class PartsManager
 
     public static async Task Update(Part part)
     {
-        throw new NotImplementedException();
+        if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
+            return;
     }
 
     public static async Task Delete(string partID)
