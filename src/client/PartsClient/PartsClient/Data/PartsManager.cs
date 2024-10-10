@@ -90,5 +90,6 @@ public static class PartsManager
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             return;
         HttpRequestMessage msg = new(HttpMethod.Delete, $"{Url}parts/{partID}");
+        var client = await GetClient();
     }
 }
