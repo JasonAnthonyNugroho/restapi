@@ -53,6 +53,14 @@ public static class PartsManager
     {
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             return new Part();
+        var part = new Part()
+        {
+            PartName = partName,
+            Suppliers = new List<string>(new[] { supplier }),
+            PartID = string.Empty,
+            PartType = partType,
+            PartAvailableDate = DateTime.Now.Date
+        };
     }
 
     public static async Task Update(Part part)
