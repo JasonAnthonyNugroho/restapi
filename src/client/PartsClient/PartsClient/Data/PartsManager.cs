@@ -79,6 +79,8 @@ public static class PartsManager
         if (Connectivity.Current.NetworkAccess != NetworkAccess.Internet)
             return;
         HttpRequestMessage msg = new(HttpMethod.Put, $"{Url}parts/{part.PartID}");
+        msg.Content = JsonContent.Create<Part>(part);
+        
     }
 
     public static async Task Delete(string partID)
