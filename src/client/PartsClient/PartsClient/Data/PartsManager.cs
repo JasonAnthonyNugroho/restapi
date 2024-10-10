@@ -13,7 +13,7 @@ public static class PartsManager
     // TODO: Add fields for BaseAddress, Url, and authorizationKey
     static readonly string BaseAddress = "URL GOES HERE";
     static readonly string Url = $"{BaseAddress}/api/";
-    
+    private static string authorizationKey;
     static HttpClient client;
 
     private static async Task<HttpClient> GetClient()
