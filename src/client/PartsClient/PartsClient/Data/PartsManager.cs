@@ -80,7 +80,7 @@ public static class PartsManager
             return;
         HttpRequestMessage msg = new(HttpMethod.Put, $"{Url}parts/{part.PartID}");
         msg.Content = JsonContent.Create<Part>(part);
-        
+        var client = await GetClient();
     }
 
     public static async Task Delete(string partID)
